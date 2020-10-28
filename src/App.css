@@ -1,4 +1,5 @@
-.wrapper {
+.wrapper {    
+  background-color: linear-gradient(#e66465, #9198e5);
   margin: 0 auto;
   width: 1200px;
   display: grid;
@@ -7,11 +8,11 @@
   grid-template-areas:
   'h h'
   'n c';
+
 }
 
 .header {
   grid-area: h;
-  background-color: rgb(133, 133, 238);
 }
 
 .header img {
@@ -21,12 +22,9 @@ border-radius: 35px;
 
 .nav {
     grid-area:n;
-    background-color:white;
 }
 
 .content {
-  display: flex;
-  justify-content: space-between;
+  background: url('https://i.pinimg.com/564x/62/a4/7c/62a47ce3d185c5fc7bef37a10135a794.jpg') no-repeat;
   grid-area: c;
-  background-color: rgb(172, 172, 216);
 }
