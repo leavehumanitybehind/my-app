@@ -1,5 +1,4 @@
 .wrapper {    
-  background-color: linear-gradient(#e66465, #9198e5);
   margin: 0 auto;
   width: 1200px;
   display: grid;
@@ -9,22 +8,4 @@
   'h h'
   'n c';
 
-}
-
-.header {
-  grid-area: h;
-}
-
-.header img {
-  margin-left: 50px;
-border-radius: 35px;
-}
-
-.nav {
-    grid-area:n;
-}
-
-.content {
-  background: url('https://i.pinimg.com/564x/62/a4/7c/62a47ce3d185c5fc7bef37a10135a794.jpg') no-repeat;
-  grid-area: c;
 }

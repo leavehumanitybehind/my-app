@@ -1,12 +1,15 @@
 import React from 'react';
+import classes from  "./nav.module.css";
+
+
 const Nav = () => {
-    return <nav className="nav">
+    return <nav className={classes.nav}>
         <ul>
-            <li><a href="#">Profile</a></li>
-            <li><a href='#'>Messages</a></li>
-            <li><a href='#'>News</a></li>
-            <li><a href='#'>Music</a></li>
-            <li><a href='#'>Settings</a></li>
+            <li class={classes.item}><a href="#">Profile</a></li>
+            <li class={classes.item}><a href='#'>Messages</a></li>
+            <li class={classes.item}><a href='#'>News</a></li>
+            <li class={classes.item}><a href='#'>Music</a></li>
+            <li class={classes.item}><a href='#'>Settings</a></li>
         </ul>
     </nav> 
 };
