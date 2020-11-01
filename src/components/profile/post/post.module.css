@@ -1,0 +1,35 @@
+.post {
+    margin-bottom: 20px;
+}
+.message {
+    color: black;
+    font-size: 24px;
+}
+
+.info {
+    display: flex;
+}
+
+.like__wrapper {
+    display: flex;
+}
+
+.like {
+    position: relative;
+    border: none;
+    margin-right: 20px;
+}
+
+.like::after {
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+        border-radius: 50%;
+    background-image: url('https://static8.depositphotos.com/1589661/1068/v/450/depositphotos_10684320-stock-illustration-facebook-like-button.jpg');
+background-size:  30px 30px;
+background-repeat: no-repeat;
+}
+

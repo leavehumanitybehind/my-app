@@ -9,3 +9,8 @@
   'n c';
 
 }
+
+
+.wrapper__content {
+  grid-area: c;
+}
