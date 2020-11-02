@@ -1,3 +1,16 @@
-.dialog {
+.dialogs {
     background: linear-gradient(#f0f3ac, #acaead);
+    display: flex;
 }
+
+.dialogs__items {
+    background: white;
+    padding: 30px;
+}
+
+
+.dialogs__messages {
+    padding: 30px;
+}
+
+

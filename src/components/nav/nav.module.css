@@ -20,3 +20,8 @@ background: linear-gradient(#f0f3ac, #acaead);
     text-decoration: none;
     color: green;
 }
+
+a.active {
+    color: rgb(111, 255, 111);
+    font-weight: bold;
+}

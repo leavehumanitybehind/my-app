@@ -1,0 +1,13 @@
+
+.posts__window {
+    width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+textarea {
+    width: 250px;
+    height: 100px;
+
+}

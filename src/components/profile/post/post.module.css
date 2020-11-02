@@ -1,17 +1,27 @@
 .post {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+    width: 50%;
 }
 .message {
+    display: flex;
     color: black;
     font-size: 24px;
+    margin-bottom: 10px;
 }
 
-.info {
-    display: flex;
+.name {
+    font-size: 16px;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .like__wrapper {
     display: flex;
+    justify-content: flex-end;
 }
 
 .like {
