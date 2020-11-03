@@ -10,6 +10,8 @@ background: linear-gradient(#f0f3ac, #acaead);
 }
 .nav__list {
     font-size: 24px;
+    margin: 0;
+    padding: 15px;
 }
 
 .nav__list li {

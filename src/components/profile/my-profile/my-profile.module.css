@@ -1,0 +1,20 @@
+.my__profile {
+    display: flex;
+    flex-direction: column;
+}
+ul {
+    width: 250px;
+    padding:0;
+    margin: 0;
+}
+ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 30px;
+    padding: 0;
+    margin: 0 auto;
+}

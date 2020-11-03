@@ -1,13 +1,20 @@
 import React from 'react';
+import classes from './profile.module.css';
+import Comments from './comments/comments';
+import PostsWindow from './posts-window/posts-window';
 import MyPosts from './my-posts/my-posts';
+import MyProfile from './my-profile/my-profile';
 
+const Profile = (props) => {
 
-const Profile = () => {
-    return <div>
-        <img src='https://i1.wp.com/www.codeofliving.com/wp-content/uploads/2019/10/friendship-quotes.jpg?fit=1920%2C1080&ssl=1' width="900" height='400' />;
-        <MyPosts />
-        <div>Comments</div>
-       
+    return <div className={classes.profile}>
+        <div className={classes.header}>
+        <MyProfile name='Rosa Black' city='Sydney' site='www.rosa.com' img='https://i.pinimg.com/564x/6f/dd/19/6fdd198be40021b9ced1c0dbe885c904.jpg' birth='01.06.22'/>
+        <PostsWindow />
+        </div>
+        <MyPosts posts={props.state.posts} />
+        <Comments />
+
     </div>
 }
 

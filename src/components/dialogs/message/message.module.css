@@ -1,3 +1,26 @@
 .dialog__message {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog__messageTo {
+ 
+   order: 1;
+   align-items: center;
+    display: flex;
+}
+
+
+.dialog__messageFrom {
+      padding-top: 40px;
+     display: flex;
+     order: 2;
+   align-items: center;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }

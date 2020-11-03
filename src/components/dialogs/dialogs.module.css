@@ -1,6 +1,7 @@
 .dialogs {
     background: linear-gradient(#f0f3ac, #acaead);
     display: flex;
+
 }
 
 .dialogs__items {
@@ -8,9 +9,27 @@
     padding: 30px;
 }
 
-
 .dialogs__messages {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     padding: 30px;
+        width: 500px;
 }
 
+.text {
+display: flex;
 
+  position: absolute;
+  bottom: 0;
+}
+.text__input {
+    width: 500px;
+    height: 60px;
+}
+
+.search {
+    width: 200px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
