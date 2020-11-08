@@ -4,7 +4,7 @@ import classes from  "./nav.module.css";
 
 const Nav = (props) => {
 
-    let sideBarElement = props.state.
+    let sideBarElement = props.sideBar.
 map((s) => <li className={classes.item}><NavLink to={s.url} activeClassName={classes.active}>{s.name}</NavLink></li>)
     return <nav className={classes.nav}>
         <ul className={classes.nav__list}>

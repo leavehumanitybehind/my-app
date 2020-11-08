@@ -5,13 +5,20 @@ import classes from "./post-window.module.css";
 const PostsWindow = (props) => {
  let newPostElement = React.createRef();
 
+
 let addPosts = () => {
     let text = newPostElement.current.value;
     props.addPost(text);
-    newPostElement.current.value = ``;
-}
+} 
+
+
+let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateNewText(text);
+ }
+
     return (<div className={classes.posts__window}>
-        <textarea ref={ newPostElement }></textarea>
+        <textarea onChange={onPostChange} ref={newPostElement} value={props.textValue}/>
         <button onClick={ addPosts }>Add post </button>
         <button>Remove post </button>
     </div>

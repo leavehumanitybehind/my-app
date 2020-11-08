@@ -10,9 +10,9 @@ const Profile = (props) => {
     return <div className={classes.profile}>
         <div className={classes.header}>
         <MyProfile name='Rosa Black' city='Sydney' site='www.rosa.com' img='https://i.pinimg.com/564x/6f/dd/19/6fdd198be40021b9ced1c0dbe885c904.jpg' birth='01.06.22'/>
-        <PostsWindow addPost={props.addPost} />
+            <PostsWindow addPost={props.addPost} textValue={props.profilePage.newTextValue} updateNewText={props.updateNewText}/>
         </div>
-        <MyPosts posts={props.state.posts} />
+        <MyPosts posts={props.profilePage.posts} />
         <Comments />
 
     </div>
