@@ -1,3 +1,5 @@
+import { rerenderAll } from '../render';
+
 let state = {
     dialogPage: {
          names: [
@@ -8,27 +10,42 @@ let state = {
         { name: 'Johnas', id: '5', img: 'https://i.pinimg.com/564x/17/9d/39/179d39e4321a754522645ae781240c26.jpg' }
     ],
     messages: [
- { messageTo: 'Привет', messageFrom: "Здарова" },
+        { messageTo: 'Привет', messageFrom: "Здарова" },
         { messageTo: 'Гулять пойдешь? ', messageFrom: "Да нет, там что-то холодно" },
         { messageTo: 'Ну так оденься потеплей!', messageFrom: "Ой да ну..." },
     ]
     },
 profilePage: {
 posts: [
-        { message: 'Почему никто не чешет пузико?', name: 'Пряничек', surname: 'Сладенький', count: '15' },
-        { message: 'How are you', name: 'Ягодка', surname: 'Спелая', count: '15' },
-        { message: 'Where are you', name: 'Эклерчик', surname: 'Ванильный', count: '20' },
-        { message: 'I love you', name: 'Кексик', surname: 'Малиновый', count: '25' },
-        { message: 'Why nobody loves me?', name: 'Кролик', surname: 'Апельсиновый', count: '14' }
+        { id: '1', message: 'Почему никто не чешет пузико?', name: 'Пряничек', surname: 'Сладенький', count: '15' },
+        { id: '2', message: 'How are you', name: 'Ягодка', surname: 'Спелая', count: '15' },
+        { id: '3', message: 'Where are you', name: 'Эклерчик', surname: 'Ванильный', count: '20' },
+        { id: '4',message: 'I love you', name: 'Кексик', surname: 'Малиновый', count: '25' },
+        { id: '5',message: 'Why nobody loves me?', name: 'Кролик', surname: 'Апельсиновый', count: '14' }
     ]
 },
-sideBar:[
+sideBar: {
+    menus: [
     { name: 'Профиль', url: '/profile'},
+    { name: 'Сообщения', url: '/dialogs'},
     { name: 'Музыка', url: '/music'},
     { name: 'Новости', url: '/news'},
-    { name: 'Сообщения', url: '/dialogs'},
     { name: 'Настройки', url: '/settings'}
 ]
+}
 };
+
+export let addPost = (postMessage) => {
+let newPost = {
+    id: 5,
+    message: postMessage,
+    name: 'Кролик',
+    count: 0
+};
+
+state.profilePage.posts.push(newPost);
+rerenderAll(state);
+};
+
 
 export default state;

@@ -4,6 +4,12 @@ import Message from './message/message';
 import User from './user.js/user';
 
 const Dialogs = (props) => {
+    const message = React.createRef();
+const addMessaage = () => {
+    let text = message.current.value;
+    console.log(text);
+
+}
 
     let namesElement = props.state.names.
         map((n) => <User name={n.name} id={n.id} img={n.img} />)
@@ -19,8 +25,8 @@ const Dialogs = (props) => {
             <div className={classes.dialogs__messages}>
                { messageElement }
                 <div className={classes.text}>
-                    <input className={classes.text__input} type="text"/>
-                <button>Отправить</button>
+                    <input ref={ message } className={classes.text__input} type="text"/>
+                <button onClick = {addMessaage}>Отправить</button>
             </div>
             </div>
            
