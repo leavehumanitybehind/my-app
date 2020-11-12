@@ -8,13 +8,15 @@ const PostsWindow = (props) => {
 
 let addPosts = () => {
     let text = newPostElement.current.value;
-    props.addPost(text);
+    let action = { type: `ADD-POST`, newTextValue: text};
+    props.dispatch(action);
 } 
 
 
 let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.updateNewText(text);
+    let action ={ type: `UPDATE-NEW-TEXT`, newText: text};
+    props.dispatch(action);
  }
 
     return (<div className={classes.posts__window}>
