@@ -1,3 +1,6 @@
+import profileReducer from "./profile-reducer";
+import dialogReducer from "./dialog-reducer";
+
 let store = {
     _state: {
         dialogPage: {
@@ -42,37 +45,16 @@ let store = {
         this._rerenderAll = observer;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newTextValue,
-                name: 'Кролик',
-                count: 0
-            }
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newTextValue = '';
-            this._rerenderAll(this._state);
-        } else if (action.type === 'UPDATE-NEW-TEXT') {
-            this._state.profilePage.newTextValue = action.newText;
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action);
         this._rerenderAll(this._state);
-        }
-        else if (action.type === 'SEND-MESSAGE') {
-            let newMessage = {
-                messageTo: this._state.dialogPage.newMessageValue,
-                messageFrom: ''
-            };
-            this._state.dialogPage.messages.push(newMessage);
-            this._state.dialogPage.newMessageValue = '';
-            this._rerenderAll(this._state);
-        } else if (action.type === 'UPDATE-NEW-MESSAGE') {
-            this._state.dialogPage.newTextValue = action.newText;
-            this._rerenderAll(this._state);
-        }
     },
     _rerenderAll() {
         console.log("state")
     }
 }
+
+
 
 
 window.store = store;
