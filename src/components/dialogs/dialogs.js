@@ -2,25 +2,30 @@ import React from 'react';
 import classes from './dialogs.module.css';
 import Message from './message/message';
 import User from './user.js/user';
-import { sendMessageActionCreater, updateNewMessageActionCreator} from '../../redux/dialog-reducer';
+
 
 const Dialogs = (props) => {
+    let state = props.dialogPage;
+    
+    let namesElement = state.names.
+        map((n) => <User name={n.name} id={n.id} img={n.img} />);
+
+    let messageElement = state.messages.
+        map((m) => <Message messageTo={m.messageTo} messageFrom={m.messageFrom} img='https://i.pinimg.com/564x/bc/ba/7d/bcba7d5d33eca073e281517fe32864ee.jpg' />);
+    
+        let newMessageValue = state.newMessageValue;
+        
     const message = React.createRef();
 
-const addMessage = () => {
-    let text = message.current.value;
-    props.dispatch(sendMessageActionCreater(text));
-}
-
-    const onChangeText = () => {
-        let text = message.current.value;
-        props.dispatch(updateNewMessageActionCreator(text));
+    const onAddMessage = () => {
+        props.addMessage();
     }
-    let namesElement = props.state.names.
-        map((n) => <User name={n.name} id={n.id} img={n.img} />)
-        
-    let messageElement = props.state.messages.
-        map((m) => <Message messageTo={m.messageTo} messageFrom={m.messageFrom} img='https://i.pinimg.com/564x/bc/ba/7d/bcba7d5d33eca073e281517fe32864ee.jpg' />)
+
+    const onChangeText = (e) => {
+        let text = e.target.value
+        props.changeText(text);
+    }
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogs__items}>
@@ -28,18 +33,14 @@ const addMessage = () => {
                 {namesElement}
             </div>
             <div className={classes.dialogs__messages}>
-               { messageElement }
+                {messageElement}
                 <div className={classes.text}>
-                    <input onChange= {onChangeText} ref={ message } className={classes.text__input} value={props.newValue} type="text"/>
-                <button onClick = {addMessage}>Отправить</button>
+                    <input onChange={onChangeText} ref={message} className={classes.text__input} value={ newMessageValue } type="text" />
+                    <button onClick={onAddMessage}>Отправить</button>
+                </div>
             </div>
-            </div>
-           
         </div>
-
-
     )
-
 };
 
 export default Dialogs;
