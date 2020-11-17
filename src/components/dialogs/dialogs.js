@@ -6,15 +6,15 @@ import User from './user.js/user';
 
 const Dialogs = (props) => {
     let state = props.dialogPage;
-    
+
     let namesElement = state.names.
         map((n) => <User name={n.name} id={n.id} img={n.img} />);
 
     let messageElement = state.messages.
         map((m) => <Message messageTo={m.messageTo} messageFrom={m.messageFrom} img='https://i.pinimg.com/564x/bc/ba/7d/bcba7d5d33eca073e281517fe32864ee.jpg' />);
-    
-        let newMessageValue = state.newMessageValue;
-        
+
+    let newMessageValue = state.newMessageValue;
+
     const message = React.createRef();
 
     const onAddMessage = () => {
@@ -23,7 +23,7 @@ const Dialogs = (props) => {
 
     const onChangeText = (e) => {
         let text = e.target.value
-        props.changeText(text);
+        props.changeMessage(text);
     }
 
     return (
@@ -35,7 +35,7 @@ const Dialogs = (props) => {
             <div className={classes.dialogs__messages}>
                 {messageElement}
                 <div className={classes.text}>
-                    <input onChange={onChangeText} ref={message} className={classes.text__input} value={ newMessageValue } type="text" />
+                    <input onChange={onChangeText} ref={message} className={classes.text__input} value={newMessageValue} type="text" />
                     <button onClick={onAddMessage}>Отправить</button>
                 </div>
             </div>

@@ -16,12 +16,19 @@ const profileReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_POST: 
             let text = state.newTextValue;
-            state.posts.push({ id: '5', message: text, name: 'Кролик', surname: 'Апельсиновый', count: '14'});
-        state.newTextValue = '';
-        return state;
-    case UPDATE_NEW_TEXT: 
-        state.newTextValue = action.newText;
-        return state;
+            let newState = {...state} ;
+            newState.newTextValue = ``;
+            newState.posts = [...state.posts];
+            
+            newState.posts.push({ id: '5', message: text, name: 'Кролик', surname: 'Апельсиновый', count: '14'});
+            
+        return newState;
+    case UPDATE_NEW_TEXT: {
+            let newState = { ...state } 
+            newState.newTextValue = action.newText;
+            return newState;
+    }
+      
     default:
  return state;
 }

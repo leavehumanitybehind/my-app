@@ -3,10 +3,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/dialogs/dialogsContainer';
 import Header from './components/header/header';
-import Nav from './components/nav/nav';
+import NavContainer from './components/nav/nav-container';
 import Music from './components/music/music';
 import News from './components/news/news';
-import Profile from './components/profile/profile';
+import ProfileContainer from './components/profile/profile-Container';
 import Settings from './components/settings/settings';
 
 
@@ -15,12 +15,9 @@ const App = (props) => {
     <BrowserRouter>
       <div className="wrapper">
         <Header />
-        <Nav sideBar={props.state.sideBar.menus} />
+        <NavContainer store={props.store} />
         <div className="wrapper__content">
-          <Route path='/profile' render={() => (<Profile
-            profilePage={props.state.profilePage}
-            dispatch={props.dispatch}
-            store = {props.store} />)} />
+          <Route path='/profile' render={() => (<ProfileContainer store ={props.store} />)} />
           <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/> } />
           <Route path='/news' render={() => (<News />)} />
           <Route path='/music' render={() => (<Music />)} />
