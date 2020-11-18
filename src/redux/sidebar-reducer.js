@@ -4,7 +4,8 @@ const initialState = {
         { name: 'Сообщения', url: '/dialogs' },
         { name: 'Музыка', url: '/music' },
         { name: 'Новости', url: '/news' },
-        { name: 'Настройки', url: '/settings' }
+        { name: 'Настройки', url: '/settings' },
+        { name: 'Все пользователи', url: '/users' }
     ]
 }
 

@@ -8,7 +8,7 @@ import Profile from './profile';
 const mapStatetoProps = (state) => {
     return {
         posts: state.profilePage.posts,
-        profilePage: state.profilePage
+        newTextValue: state.profilePage.newTextValue
     };
 }
 
