@@ -6,7 +6,26 @@
     display: flex;
     padding: 10px;
     margin-bottom: 10px;
-    justify-content: center;
+    justify-content: space-between;
     width: 70%;
     align-items: center;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+}
+
+.btnFollow {
+background-color: greenyellow;
+}
+
+.btnUnfollow {
+    background-color: green;
+
+}
+
+.image {
+    width: 60px;
+    height: 60px;
 }
