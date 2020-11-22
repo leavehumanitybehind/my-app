@@ -29,3 +29,22 @@ background-color: greenyellow;
     width: 60px;
     height: 60px;
 }
+
+.pag {
+    margin-top: 20px;
+    display: flex;
+    max-width: 800px;
+    overflow: hidden;
+    justify-content: space-around;
+}
+
+.pag a {
+    margin-right: 5px;
+}
+
+.pagination {
+    font-weight: bold;
+    width: 30px;
+    background-color: hotpink;
+    border-radius: 50%;
+}
