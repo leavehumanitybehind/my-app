@@ -18,3 +18,22 @@ p {
     padding: 0;
     margin: 0 auto;
 }
+
+.job {
+        display: flex;
+    flex-direction: column;
+}
+
+.contacts {
+    display: flex;
+}
+
+.contacts li {
+    position: relative;
+    margin-right: 10px;
+}
+
+.contacts img {
+    width: 30px;
+    height: 30px;
+}

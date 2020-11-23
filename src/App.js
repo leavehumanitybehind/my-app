@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/dialogs/dialogsContainer';
-import Header from './components/header/header';
+import HeaderContainer from './components/header/header-container';
 import NavContainer from './components/nav/nav-container';
 import Music from './components/music/music';
 import News from './components/news/news';
@@ -15,10 +15,10 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <Header />
+        <HeaderContainer />
         <NavContainer store={props.store} />
         <div className="wrapper__content">
-          <Route path='/profile' render={() => (<ProfileContainer store ={props.store} />)} />
+          <Route path='/profile/:userId?' render={() => (<ProfileContainer store ={props.store} />)} />
           <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/> } />
           <Route path='/news' render={() => (<News />)} />
           <Route path='/music' render={() => (<Music />)} />
