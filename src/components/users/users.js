@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from "./users.module.css";
-import * as axios from 'axios';
+import { usersAPI } from '../../api/api';
 
 const Users = (props) => {
 
@@ -29,48 +29,42 @@ const Users = (props) => {
         </div>
         {
             props.users.map(u =>
-                <NavLink to={`/profile/${u.id}`}>
-                    <div className={classes.userEl} key={u.id}>
-                        <span>
-                            <div> {u.name} </div>
-                            <img src={u.photos.small !== null ? u.photos.small : 'https://i.pinimg.com/564x/11/e5/3f/11e53f8bec11e025f0074171f06abe19.jpg'} className={classes.image} />
-
+                <div className={classes.userEl} key={u.id}>
+                    <span><NavLink to={`/profile/${u.id}`}>
+                        {u.name}
+                    </NavLink>
+                        <img src={u.photos.small !== null ? u.photos.small : 'https://i.pinimg.com/564x/11/e5/3f/11e53f8bec11e025f0074171f06abe19.jpg'} className={classes.image} />
+                        <div>
                             {u.followed ?
-                                <button onClick={() => {
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
-                                     { withCredentials: true,
-                                    headers: {
-                                                "API-KEY": '703a5478- 2a9b- 45e3 - 8a74 - d6cac511583a'
-                                    }}).
-                                        then(response => {
-                                            if (response.data.resultCode === 0) {
+                                <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.btnFollow} onClick={() => {
+                                    props.toggleIsFollowingProgress(true, u.id);
+                                    usersAPI.unfollow(u.id).
+                                        then(data => {
+                                            if (data.resultCode === 0) {
                                                 props.unfollow(u.id);
                                             }
+                                            props.toggleIsFollowingProgress(false, u.id);
                                         });
-                                }
-                                }
-                                    className={classes.btnFollow} >Follow</button> :
-                                <button onClick={() => {
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, { withCredentials: true,
-                                        headers: {
-                                            "API-KEY": '703a5478- 2a9b- 45e3 - 8a74 - d6cac511583a'
-                                        } }).
-                                        then(response => {
-                                            if (response.data.resultCode === 0) {
+                                }}>Follow</button> :
+                                <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.btnUnfollow} onClick={() => {
+                                    props.toggleIsFollowingProgress(true, u.id);
+                                    usersAPI.follow(u.id).
+                                        then(data => {
+                                            if (data.resultCode === 0) {
                                                 props.follow(u.id);
                                             }
+                                            props.toggleIsFollowingProgress(false, u.id);
                                         });
-
-                                }} className={classes.btnUnfollow}> Followed </button>
+                                }}>  Followed </button>
                             }
+                        </div>
+                    </span>
+                    <span>
 
-                        </span>
-                        <span>
+                        <div> {u.description} </div>
+                    </span>
+                </div>
 
-                            <div> {u.description} </div>
-                        </span>
-                    </div>
-                </NavLink>
             )
 
         }
