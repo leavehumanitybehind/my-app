@@ -2,20 +2,24 @@ import React from 'react';
 import { sendMessageActionCreater, updateNewMessageActionCreator } from '../../redux/dialog-reducer';
 import Dialogs from './dialogs';
 import { connect } from "react-redux";
+import { withAuthRedirect } from "../../hoc/authRedirect";
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
 let mapStatetoProps = (state) => { //сидят данные из стейта
     return {
-        dialogPage: state.dialogPage
+        dialogPage: state.dialogPage,
     }
 }
 
 let mapDispatchtoProps = (dispatch) => {
     return {
-        addMessage: () => { dispatch(sendMessageActionCreater())},
-        changeMessage: (text) => { dispatch(updateNewMessageActionCreator(text))}
+        addMessage: () => { dispatch(sendMessageActionCreater()) },
+        changeMessage: (text) => { dispatch(updateNewMessageActionCreator(text)) }
     };
 }
-
-const DialogsContainer = connect(mapStatetoProps, mapDispatchtoProps) (Dialogs); // dialogs законекть к стору!
-
-export default DialogsContainer;
+export default compose(
+    connect(mapStatetoProps, mapDispatchtoProps),
+    withRouter,
+    withAuthRedirect
+)(Dialogs);

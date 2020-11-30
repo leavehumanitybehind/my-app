@@ -9,21 +9,22 @@ import News from './components/news/news';
 import ProfileContainer from './components/profile/profile-Container';
 import Settings from './components/settings/settings';
 import UsersContainer from './components/users/users-container';
-
+import Login from './components/login/login';
 
 const App = (props) => {
   return (
     <BrowserRouter>
       <div className="wrapper">
         <HeaderContainer />
-        <NavContainer store={props.store} />
+        <NavContainer />
         <div className="wrapper__content">
-          <Route path='/profile/:userId?' render={() => (<ProfileContainer store ={props.store} />)} />
-          <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/> } />
+          <Route path='/profile/:userId?' render={() => (<ProfileContainer/>)} />
+          <Route path='/dialogs' render={() => <DialogsContainer/> } />
           <Route path='/news' render={() => (<News />)} />
           <Route path='/music' render={() => (<Music />)} />
           <Route path='/settings' render={() => (<Settings />)} />
-          <Route path='/users' render={() => (<UsersContainer store={props.store} />)} />
+          <Route path='/login' render={() => (<Login />)} />
+          <Route path='/users' render={() => (<UsersContainer />)} />
         </div>
 
       </div>

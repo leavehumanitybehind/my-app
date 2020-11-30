@@ -1,7 +1,7 @@
 import React from 'react';
 import Preloader from '../../preloader/preloader';
 import classes from "./my-profile.module.css";
-
+import Status from './status.js';
 
 const MyProfile = (props) => {
     if (!props.profile) {
@@ -10,6 +10,7 @@ const MyProfile = (props) => {
     return (
         <div className={classes.my__profile}>
             <p>{props.profile.fullName}</p>
+            <Status status={props.status} updateStatus={props.updateStatus}/>
 
             <img src={props.profile.photos.large} width="250" height="300" />
             <div>

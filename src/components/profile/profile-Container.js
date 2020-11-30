@@ -1,9 +1,10 @@
 import React from 'react';
-import { addPostActionCreater, updateNewPostActionCreator, setUserProfileAC } from '../../redux/profile-reducer';
+import { addPosts, changePost, getUserProfile, getUserStatus, updateStatus } from '../../redux/profile-reducer';
 import { connect } from "react-redux";
-import * as axios from 'axios';
 import Profile from './profile';
+import { withAuthRedirect } from "../../hoc/authRedirect";
 import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
 class ProfileAPI extends React.Component {
     componentDidMount() {
@@ -11,13 +12,11 @@ class ProfileAPI extends React.Component {
         if (!userId) {
             userId = 2;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).
-            then(response => {
-                this.props.setUserProfile(response.data)
-            });
+        this.props.getUserProfile(userId);
+        this.props.getUserStatus(userId);
     }
     render() {
-        return <Profile {...this.props} profile={this.props.profile} />
+        return <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />
     }
 }
 
@@ -25,22 +24,13 @@ const mapStatetoProps = (state) => {
     return {
         posts: state.profilePage.posts,
         newTextValue: state.profilePage.newTextValue,
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        status: state.profilePage.status
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addPosts: () => { dispatch(addPostActionCreater()) },
-        changePost: (text) => {
-            let action = updateNewPostActionCreator(text)
-            dispatch(action);
-        },
-        setUserProfile: (profile) => { dispatch(setUserProfileAC(profile)) }
-    }
-}
 
-let WithURLDataContainerComponent = withRouter(ProfileAPI);
-const ProfileContainer = connect(mapStatetoProps, mapDispatchToProps)(WithURLDataContainerComponent);
-
-export default ProfileContainer;
+export default compose(
+    connect(mapStatetoProps, { getUserProfile, getUserStatus, addPosts, changePost, updateStatus }),
+    withRouter
+)(ProfileAPI)
